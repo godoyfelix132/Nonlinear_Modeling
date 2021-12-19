@@ -1,0 +1,40 @@
+
+hpeesofsim (*) 510.shp Jul 22 2019, MINT version 5
+    (64-bit windows built: Mon Jul 22, 2019 22:53:59 +0000)
+
+
+CT Sweep1[1] <MyLibrary_lib:exam:schematic>   Vg=(-950e-03->0)
+
+DC Sweep1[1].DC1[1/10] <MyLibrary_lib:exam:schematic>  Vg=-950e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[2/10] <MyLibrary_lib:exam:schematic>  Vg=-844.444e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[3/10] <MyLibrary_lib:exam:schematic>  Vg=-738.889e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[4/10] <MyLibrary_lib:exam:schematic>  Vg=-633.333e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[5/10] <MyLibrary_lib:exam:schematic>  Vg=-527.778e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[6/10] <MyLibrary_lib:exam:schematic>  Vg=-422.222e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[7/10] <MyLibrary_lib:exam:schematic>  Vg=-316.667e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[8/10] <MyLibrary_lib:exam:schematic>  Vg=-211.111e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[9/10] <MyLibrary_lib:exam:schematic>  Vg=-105.556e-03  Vd=(0->3.5)
+....................
+
+DC Sweep1[1].DC1[10/10] <MyLibrary_lib:exam:schematic>  Vg=0  Vd=(0->3.5)
+....................
+
+Resource usage:
+  Total stopwatch time     =     1.32 seconds.
+

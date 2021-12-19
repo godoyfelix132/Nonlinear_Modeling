@@ -1,0 +1,14 @@
+(nil
+    spare_node_list(3)
+       (
+            "N__0"
+            "N__4"
+            "SLC1._NET1"
+        )
+    spare_inst_list(3)
+       (
+            "C1"
+            "SLC1.c1"
+            "SLC1.l1"
+        )
+)

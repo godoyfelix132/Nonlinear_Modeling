@@ -1,0 +1,31 @@
+
+hpeesofsim (*) 510.shp Jul 22 2019, MINT version 5
+    (64-bit windows built: Mon Jul 22, 2019 22:53:59 +0000)
+
+
+HB HB1[1] <MyLibrary_lib:exam_b:schematic>
+    Number of tones:   1.
+    Number of frequencies:   101.
+    Number of time samples:  256.
+    Number of HB equations (problem size): 5628.
+    Auto mode: on.
+    Convergence mode: Auto.
+    Linear solver: Krylov (GS_GMRES).
+    Preconditioner: DCP.
+    The general solver is used for HB Krylov preconditioning.
+------------------------------------------------------------------------------
+Newton solver:					Linear solver:
+Iter	KCL residual	Damp %	Sol update	Iters	Residual
+------------------------------------------------------------------------------
+0 	3.58482 A   	100.0             
+1 	579.599 mA  	100.0	22.9835 V   	  3	2.139e-02   
+2 	51.3789 mA  	100.0	4.54066 V   	 47	4.955e-02   
+3 	2.30008 mA  	100.0	736.118 mV  	 50	1.300e-02   
+4 	32.2162 uA  	100.0	7.65272 mV  	 50	2.031e-02   
+5 	1.29665 uA  	100.0	630.967 uV  	 50	2.445e-02   
+6 	7.48767 nA  	100.0	3.52663 uV  	 50	1.109e-02   
+7 	232.465 pA  	100.0	176.978 nV  	 50	1.568e-02   
+
+Resource usage:
+  Total stopwatch time     =     1.28 seconds.
+

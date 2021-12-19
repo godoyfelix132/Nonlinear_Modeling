@@ -1,0 +1,85 @@
+; Top Design: "MyLibrary_lib:exam:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="MyLibrary_lib:exam:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+Short:IP_mod  N__6 N__0 Mode=0 SaveCurrent=yes 
+SDD:SDD2P1  N__5 0 N__0 0  I[1,0]=0  I[2,0]=Imod  
+#uselib "ckt" , "DAC"
+DAC:DAC1  File="D:\Respaldo\Maestria\2 - Cuatrimestre\Microondas\Examen_3\MyWorkspace_wrk\data\M_pulsado.cit" Type="citi" InterpMode="spline" InterpDom="ri" ExtrapMode="interpMode" iVar1="Vgs" iVal1=Vg iVar2="Vds" iVal2=Vd 
+V_Source:SRC2  N__6 0 Type="V_DC" Vdc=Vd SaveCurrent=1 
+V_Source:SRC1  N__5 0 Type="V_DC" Vdc=Vg SaveCurrent=1 
+DC:DC1 StatusLevel=2 DevOpPtLevel=0 UseFiniteDiff=no PrintOpPoint=no Restart=1 \
+SweepVar="Vd" SweepPlan="DC1_stim" OutputPlan="DC1_Output" 
+
+SweepPlan: DC1_stim Start=0 Stop=3.5 Lin=20 
+
+OutputPlan:DC1_Output \
+      Type="Output" \
+      UseNodeNestLevel=yes \
+      NodeNestLevel=2 \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2 \
+      UseDeviceCurrentNestLevel=no \
+      DeviceCurrentNestLevel=0 \
+      DeviceCurrentDeviceType="All" \
+      DeviceCurrentSymSyntax=yes \
+      UseCurrentNestLevel=yes \
+      CurrentNestLevel=999 \
+      UseDeviceVoltageNestLevel=no \
+      DeviceVoltageNestLevel=0 \
+      DeviceVoltageDeviceType="All"
+
+ParamSweep:Sweep1 SimInstanceName[1]="DC1" StatusLevel=2 SweepVar="Vg" SweepPlan="Sweep1_stim" 
+
+SweepPlan: Sweep1_stim Start=0 Stop=-0.95 Lin=10 
+
+
+Vds=_v2
+Vgs=_v1
+
+X=file{DAC1, "Ids"}
+Vd=3
+Vg=-1
+
+Optim:"Optim1" OptimType="hpVMO" ErrorForm="L2" MaxIters=40 P=2 DesiredError=0.0 StatusLevel=4 FinalAnalysis="None" NormalizeGoals=yes SetBestValues=yes SaveSolns=yes SaveGoals=yes SaveOptimVars=no UpdateDataset=yes SaveNominal=no SaveAllIterations=no UseAllOptVars=yes UseAllGoals=yes SaveCurrentEF=no InitialTempControlMode=0 NumShootsPerIter=20 EnableCockpit=yes NormalizeError=yes SaveAllTrials=no UseAdvTermCriteria=no CostRelativeTol=1.0e-8 LimitOfContSmallImprovement=5 
+
+OptimGoal:OptimGoal1 Expr="IP_mod.i-X" SimInstanceName="Sweep1" Weight=1 \
+SpecLimitLine[1]="OptimGoal1_limit1" 
+SpecLimitLine:"OptimGoal1_limit1" Type="EqualTo" Min=0 Max=0 Weight=1 
+SDD:SDD2P2  N__5 0 N__4 0  I[1,0]=0  I[2,0]=X  
+Short:IP_med  N__6 N__4 Mode=0 SaveCurrent=yes 
+
+gmlin=gmlin0 + (gmlinx*Vds)
+Lambda=L3 - (L0 * (1 + (L1*Vgs))*tanh(L2*Vgs))
+VK=VK0 + (VKsat * Vds)
+Vgs1=Vgs - Vth
+Vth=Vth0 + (Gamma * Vds)
+Alfa=A0 + (A1*exp(-((Vgs - A2) / A3)))
+Vgs2=Vgs1 - ((1/2)*(Vgs1 + (sqrt(((Vgs1 - VK)^2) + (Delta^2))) - (sqrt((VK^2)+(Delta^2)))))
+Vgs3=VST * ln(1+exp(Vgs2 / (VST)))
+Beff=B / (1 + (mcrit * (Vgs3^gmlin)))
+Imod=Beff * (Vgs3^2)* (1+((Lambda*Vgs)*Vds))* tanh(((Alfa) / (Vgs3^psat))*Vds)
+
+L0=-0.188717 opt{ -10 to 10 }
+VST=0.0990493 opt{ 0.00145 to 0.2 }
+Vth0=-0.787671 opt{ -1.37 to -0.458 }
+Gamma=-0.0898546 opt{ -0.1 to -0.028 }
+L2=3.01552 opt{ -10 to 10 }
+B=0.285393 opt{ 0.08 to 1 }
+A0=-3.87772 opt{ -10 to 10 }
+A1=5.86748 opt{ -10 to 20 }
+A2=-0.308094 opt{ -10 to 10 }
+A3=4.4549 opt{ -10 to 10 }
+L3=0.154634 opt{ -10 to 10 }
+L1=1.22309 opt{ -10 to 10 }
+
+gmlin0=2.56543 opt{ 0.75 to 10 }
+gmlinx=0.0102962 opt{ 0.005 to 0.015 }
+VK0=0.0599097 opt{ 0.025 to 0.1 }
+VKsat=11.6082 opt{ 2.5 to 25 }
+Delta=6.35577 opt{ 1 to 19.5 }
+
+mcrit=0.670929 opt{ 0.1 to 1 }
+psat=1.31287 opt{ 0.5 to 3 }

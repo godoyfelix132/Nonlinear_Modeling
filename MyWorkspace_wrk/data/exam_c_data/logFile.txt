@@ -1,0 +1,15 @@
+
+hpeesofsim (*) 510.shp Jul 22 2019, MINT version 5
+    (64-bit windows built: Mon Jul 22, 2019 22:53:59 +0000)
+
+
+3 spare nodes and 3 spare devices are removed.
+The details can be found in file 'D:\Respaldo\Maestria\2 - Cuatrimestre\Microondas\Examen_3\MyWorkspace_wrk\data\.\exam_c_data\spare_removal.txt'.
+
+
+SP SP1[1] <MyLibrary_lib:exam_c:schematic>   freq=2 GHz
+
+
+Resource usage:
+  Total stopwatch time     =     1.10 seconds.
+
